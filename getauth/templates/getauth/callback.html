@@ -1,0 +1,12 @@
+{% extends "getauth/base.html" %}
+
+{% block content %}
+<h1>Access Token is {{ access_token }}</h1>
+<h2>User</h2>
+<ul>
+    <li>Id: {{ user.id }}</li>
+    <li>Username: {{ user.username }}</li>
+    <li>Full name: {{ user.full_name }}</li>
+    <li>Profile Picture: {{ user.profile_picture }}</li>
+</ul>
+{% endblock content %}
