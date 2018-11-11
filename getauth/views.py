@@ -42,4 +42,5 @@ def callback(request):
         user.save()
         return render(request, "getauth/callback.html", context=context)
     else:
-        return render(request, "getauth/callback.html")
+        context = {"error_content": response.text}
+        return render(request, "getauth/error.html", context=context)
