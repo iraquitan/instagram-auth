@@ -34,8 +34,7 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 PRODUCTION = os.getenv("PRODUCTION")
-# DEBUG = False if PRODUCTION else True
-DEBUG = True
+DEBUG = False if PRODUCTION else True
 
 ALLOWED_HOSTS = []
 
