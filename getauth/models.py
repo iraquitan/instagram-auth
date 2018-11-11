@@ -14,3 +14,10 @@ class InstagramUser(models.Model):
     profile_picture = models.CharField(_("profile picture"), max_length=500)
     created_at = models.DateTimeField(_("created at"), auto_now_add=True)
     updated_at = models.DateTimeField(_("updated at"), auto_now=True)
+
+    class Meta:
+        verbose_name = _("instagram user")
+        verbose_name_plural = _("instagram users")
+
+    def __str__(self):
+        return _("%(name)s (%(id)s)") % {"name": self.username, "id": self.social_id}
