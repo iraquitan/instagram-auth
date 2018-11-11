@@ -34,7 +34,7 @@ def callback(request):
             access_token=context["access_token"],
             username=context["user"]["username"],
             full_name=context["user"]["full_name"],
-            profile_picture=context["user"]["profile picture"],
+            profile_picture=context["user"]["profile_picture"],
             social_id=context["user"]["id"],
         )
         user.save()
