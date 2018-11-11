@@ -19,15 +19,13 @@ def callback(request):
     code = request.GET.get("code", None)
 
     files = {
-        "client_id": (None, settings.CLIENT_ID),
-        "client_secret": (None, settings.CLIENT_SECRET),
-        "grant_type": (None, "authorization_code"),
-        "redirect_uri": (None, settings.AUTHORIZATION_REDIRECT_URI),
-        "code": (None, code),
+        "client_id": settings.CLIENT_ID,
+        "client_secret": settings.CLIENT_SECRET,
+        "grant_type": "authorization_code",
+        "redirect_uri": settings.AUTHORIZATION_REDIRECT_URI,
+        "code": code,
     }
-    response = requests.post(
-        "https://api.instagram.com/oauth/access_token", files=files
-    )
+    response = requests.post("https://api.instagram.com/oauth/access_token", data=files)
 
     if response.status_code == 200:
         # Add user access token to database
