@@ -9,8 +9,8 @@
 <script type="text/javascript">
     var userFeed = new Instafeed({
         get: 'user',
-        userId: {{ user.social_id }},
-    accessToken: { { user.access_token } }
+        userId: '{{ user.social_id }}',
+        accessToken: '{{ user.access_token }}'
     });
     userFeed.run();
 </script>
