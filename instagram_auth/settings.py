@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 import os
 
+# Setup Heroku Postgres Database
+import dj_database_url
 import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -21,11 +23,18 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "u=0)v!74iy9+2&c0=dv8tv*+33)n%w^8jky#_d(p&ldzrt_(ny"
+SECRET_KEY = os.getenv(
+    "SECRET_KEY", "u=0)v!74iy9+2&c0=dv8tv*+33)n%w^8jky#_d(p&ldzrt_(ny"
+)
+CLIENT_ID = os.getenv("INSTAGRAM_CLIENT_ID")
+CLIENT_SECRET = os.getenv("INSTAGRAM_CLIENT_SECRET")
+AUTHORIZATION_REDIRECT_URI = os.getenv("INSTAGRAM_REDIRECT_URI")
+
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+PRODUCTION = os.getenv("PRODUCTION")
+DEBUG = False if PRODUCTION else True
 
 ALLOWED_HOSTS = []
 
@@ -118,3 +127,6 @@ STATIC_URL = "/static/"
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+# Setup Heroku Postgres Database
+DATABASES["default"] = dj_database_url.config(conn_max_age=600, ssl_require=True)

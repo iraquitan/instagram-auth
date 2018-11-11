@@ -1,6 +1,10 @@
 {% extends "getauth/base.html" %}
 
 {% block content %}
-<a class="btn btn-primary" href="https://api.instagram.com/oauth/authorize/?client_id=4fff70bd57ae4006bb3040cd8cfec4cf&redirect_uri=https://glacial-shelf-50777.herokuapp.com/redir-uri&response_type=code"
-    role="button">Authorize Instagram</a>
+<div class="row">
+    <div class="col-12">
+        <a class="btn btn-primary" href="https://api.instagram.com/oauth/authorize/?client_id={{ client_id }}&redirect_uri=https://glacial-shelf-50777.herokuapp.com/redir-uri&response_type=code"
+            role="button">Authorize Instagram</a>
+    </div>
+</div>
 {% endblock content %}
