@@ -1,0 +1,17 @@
+{% extends "getauth/base.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div id="instafeed"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    var userFeed = new Instafeed({
+        get: 'user',
+        userId: {{ user.social_id }},
+    accessToken: { { user.access_token } }
+    });
+    userFeed.run();
+</script>
+{% endblock content %}

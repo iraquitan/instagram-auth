@@ -42,3 +42,9 @@ def callback(request):
     else:
         context = {"error_content": response.text}
         return render(request, "getauth/error.html", context=context)
+
+
+def instafeed(request, username):
+    user = InstagramUser.objects.filter(username=username).first()
+    context = {"user": user}
+    return render(request, "getauth/instafeed.html", context=context)
